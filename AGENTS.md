@@ -11,7 +11,7 @@
 ## Làm việc trong repo
 
 - Khi thiết kế pipeline, viết lệnh đo, tích hợp hai luồng hoặc chuẩn bị nộp bài và red-team, đọc `docs/ke-hoach-seminar-d5.md`. Khi đối chiếu tiêu chí chấm điểm, viết báo cáo hoặc điền bảng tự chấm, đọc `docs/seminar_rubric.md`.
-- Theo dõi tiến độ task trên Google Sheets (`1-A__bxXTPCprZHu8gtZ6cNZnnPuKrfHir6LMMDVtlx0`, sheet `Trang tính1`, tài khoản `AGY_ACCOUNT=ninhninh2906@gmail.com`): ngay sau khi hoàn thành một việc trong kế hoạch, dùng `gsheets` đọc bảng hiện tại rồi cập nhật dòng tương ứng kèm cột `Bằng chứng` (PR, commit, tệp hoặc ảnh) bằng `gsheets mutate batch` (chỉ ghi phạm vi ô hẹp cần sửa, không ghi đè cột `J` `% Tiến độ`).
+- Theo dõi tiến độ task trên Google Sheets (`1-A__bxXTPCprZHu8gtZ6cNZnnPuKrfHir6LMMDVtlx0`, sheet `Trang tính1`): ngay sau khi hoàn thành một việc trong kế hoạch, dùng `gsheets` (chọn tài khoản Google đã kết nối có quyền chỉnh sửa bảng tính, không hardcode email cá nhân trong repo) đọc bảng hiện tại rồi cập nhật dòng tương ứng kèm cột `Bằng chứng` (PR, commit, tệp hoặc ảnh) bằng `gsheets mutate batch` (chỉ ghi phạm vi ô hẹp cần sửa, không ghi đè cột `J` `% Tiến độ`).
 - Cập nhật `README.md` khi các bước cài đặt, dữ liệu hoặc lệnh đo thay đổi. Ghi lệnh thực sự tồn tại và đã được kiểm tra.
 - Dùng ảnh có quyền phân phối, ghi nguồn và cách lấy đúng bộ ảnh. Giữ thông tin đăng nhập, khóa API và dữ liệu riêng tư ngoài repo, log và prompt. Chạy benchmark trên hệ thống nhóm kiểm soát.
 
