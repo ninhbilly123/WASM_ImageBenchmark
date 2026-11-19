@@ -10,6 +10,7 @@
 
 ## Làm việc trong repo
 
+- Khi phát sinh vấn đề mới, yêu cầu chưa rõ hoặc có điểm chưa chắc chắn, phải hỏi người dùng để xác nhận trước khi thực hiện.
 - Khi thiết kế pipeline, viết lệnh đo, tích hợp hai luồng hoặc chuẩn bị nộp bài và red-team, đọc `docs/ke-hoach-seminar-d5.md`. Khi đối chiếu tiêu chí chấm điểm, viết báo cáo hoặc điền bảng tự chấm, đọc `docs/seminar_rubric.md`.
 - Theo dõi tiến độ task trên Google Sheets (`1-A__bxXTPCprZHu8gtZ6cNZnnPuKrfHir6LMMDVtlx0`, sheet `Trang tính1`): ngay sau khi hoàn thành một việc trong kế hoạch, dùng `gsheets` (chọn tài khoản Google đã kết nối có quyền chỉnh sửa bảng tính, không hardcode email cá nhân trong repo) đọc bảng hiện tại rồi cập nhật dòng tương ứng kèm cột `Bằng chứng` (PR, commit, tệp hoặc ảnh) bằng `gsheets mutate batch` (chỉ ghi phạm vi ô hẹp cần sửa, không ghi đè cột `J` `% Tiến độ`).
 - Cập nhật `README.md` khi các bước cài đặt, dữ liệu hoặc lệnh đo thay đổi. Ghi lệnh thực sự tồn tại và đã được kiểm tra.
@@ -34,7 +35,7 @@
 
 ## Nhật ký sử dụng AI
 
-- **Bắt buộc tự động ghi nhật ký ngay sau khi hoàn thành mỗi task chính có AI hỗ trợ (trước khi kết thúc lượt trả lời hoặc trước khi commit)** — không chờ người dùng nhắc. Mỗi mục trong `AI-LOG.md` dùng tiêu đề `## YYYY-MM-DD — Tên công việc` và đủ năm trường `Tool`, `Asked for`, `Kept`, `Changed`, `Rejected`.
+- **Bắt buộc tự động ghi nhật ký ngay sau khi hoàn thành mỗi task chính có AI hỗ trợ (trước khi kết thúc lượt trả lời hoặc trước khi commit)** — không chờ người dùng nhắc. Mỗi mục trong `AI-LOG.md` dùng tiêu đề `## YYYY-MM-DD — Tên công việc (<Họ và tên thành viên>)` (ví dụ `## 2026-11-20 — Hoàn thành Việc 1 (Phạm An Ninh)`, nếu chưa rõ thành viên đang thực hiện thì hỏi trước khi ghi) và đủ năm trường `Tool`, `Asked for`, `Kept`, `Changed`, `Rejected`.
 - Ghi đúng những gì nhóm giữ, sửa hoặc bỏ và phép kiểm tra dẫn đến quyết định đó. Nếu một mục không phát sinh thay đổi hoặc phần bị loại, ghi kết quả kiểm tra thực tế.
 - Để đáp ứng mức 9–10 của tiêu chí 6, nhật ký cần nêu ít nhất một lỗi thực tế từ AI — đặc biệt là thông tin kỹ thuật sai (phiên bản, API, trạng thái công cụ) hoặc phép đo sai bản chất (đo sai đối tượng, mốc thời gian hoặc dung lượng) — cùng cách nhóm phát hiện và minh chứng kiểm tra.
 - Bỏ qua hỏi đáp nhanh, chỉnh câu chữ hoặc đồng bộ tài liệu nhỏ, và các việc người dùng yêu cầu bỏ qua. Khi chưa rõ việc có cần log, hỏi trước khi sửa `AI-LOG.md`.
