@@ -57,3 +57,10 @@ Asked for: Dựng trang HTML demo dễ dùng, có trình bày chuyên nghiệp v
 Kept: Demo HTML/CSS/JS có hai vị trí nén, bộ chọn/kéo thả JPEG và hai ô chỉ số chờ phép đo thực tế.
 Changed: Giữ nút chạy ở trạng thái chờ codec và server, rồi cập nhật đầu việc tích hợp trong kế hoạch. Sửa lỗi tải favicon phát hiện trong lần mở preview đầu tiên. Đã kiểm tra chọn JPEG, bỏ qua tệp sai loại, kéo thả, xóa lô và đổi chế độ trong trình duyệt.
 Rejected: Phép kiểm tra tràn ngang dựa trên innerWidth báo sai ở 320 px vì thanh cuộn dọc. Đối chiếu lại với clientWidth cho thấy không có phần tử tràn, rồi kiểm tra ở 320, 390 và 1366 px.
+
+## 2026-11-19 — Commit, push và mở PR cho demo
+Tool: OpenAI Codex.
+Asked for: Commit trang demo, checkout main, push nhánh feat/benchmark-demo và mở PR.
+Kept: Commit 1bc31c6 chứa giao diện demo, hướng dẫn mở trang và mục nhật ký phát triển giao diện.
+Changed: Codex đã mở PR #2 vào main nhưng bỏ sót mục nhật ký riêng cho bước Git. Nhóm nhắc bổ sung, rồi Codex đối chiếu commit và trạng thái PR để ghi lại bước này.
+Rejected: Không đưa file kế hoạch trong research vào commit vì file nằm ngoài repo Git. Đã kiểm tra danh sách tệp được stage và git diff --cached --check.
