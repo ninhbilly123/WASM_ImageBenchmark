@@ -14,6 +14,10 @@ Seminar CSC13114 CQ2023/3. Nhóm chọn nén ảnh làm phạm vi khảo sát.
 
 > For a fixed batch of 10 high-resolution JPEGs (~50 MB), how do upload payload (MB) and submit-to-server-confirmation latency (ms) change when the same WebAssembly compression pipeline runs in the browser before upload instead of on the Node.js server after upload, under controlled network conditions?
 
+## Giao diện demo
+
+Mở [`demo/index.html`](demo/index.html) trong trình duyệt để đổi vị trí nén và thử chọn, kéo thả hoặc xóa lô JPEG. Tổng dung lượng ở danh sách là dung lượng tệp đầu vào. Nút **Chạy phép đo** sẽ được bật khi tích hợp codec Wasm và server Node.js.
+
 ## Chạy lại phép đo từ bản clone mới
 
 1. Clone repo [ninhbilly123/WASM_ImageBenchmark](https://github.com/ninhbilly123/WASM_ImageBenchmark) và mở thư mục gốc của bản clone.

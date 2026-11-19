@@ -50,3 +50,10 @@ Asked for: Thêm quy ước đặt tên nhánh, commit và PR, đồng bộ link
 Kept: Câu hỏi D5 và nội dung hồ sơ hiện có.
 Changed: Thêm quy ước vào AGENTS.md và cập nhật README.md cùng dòng đầu REPORT.md theo repo mới. Git ls-remote cho thấy chưa có nhánh từ xa, nên tạo commit khởi tạo rỗng trên main làm đích cho nhánh docs/repo-setup.
 Rejected: Hướng dẫn clone LeeTKOB_AWAD và vào thư mục con, vì nhóm đã chỉ định repo riêng. Đã đối chiếu hai link trong Markdown và kiểm tra tên nhánh bằng git check-ref-format.
+
+## 2026-11-19 — Dựng giao diện demo benchmark D5
+Tool: OpenAI Codex.
+Asked for: Dựng trang HTML demo dễ dùng, có trình bày chuyên nghiệp và cập nhật kế hoạch tích hợp.
+Kept: Demo HTML/CSS/JS có hai vị trí nén, bộ chọn/kéo thả JPEG và hai ô chỉ số chờ phép đo thực tế.
+Changed: Giữ nút chạy ở trạng thái chờ codec và server, rồi cập nhật đầu việc tích hợp trong kế hoạch. Sửa lỗi tải favicon phát hiện trong lần mở preview đầu tiên. Đã kiểm tra chọn JPEG, bỏ qua tệp sai loại, kéo thả, xóa lô và đổi chế độ trong trình duyệt.
+Rejected: Phép kiểm tra tràn ngang dựa trên innerWidth báo sai ở 320 px vì thanh cuộn dọc. Đối chiếu lại với clientWidth cho thấy không có phần tử tràn, rồi kiểm tra ở 320, 390 và 1366 px.
