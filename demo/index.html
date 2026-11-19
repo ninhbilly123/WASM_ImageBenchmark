@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="description" content="Demo seminar D5 về phép đo nén ảnh WebAssembly trên trình duyệt và máy chủ Node.js.">
+  <title>Benchmark nén ảnh · Seminar D5</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="styles.css">
+  <script src="demo.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="shell topbar-inner">
+      <a class="brand" href="#main">
+        <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span>Image Benchmark <small>Seminar D5</small></span>
+      </a>
+      <a class="repo-link" href="https://github.com/ninhbilly123/WASM_ImageBenchmark">GitHub</a>
+    </div>
+  </header>
+
+  <main class="shell" id="main">
+    <section class="hero" aria-labelledby="page-title">
+      <div class="hero-copy">
+        <p class="hero-meta">WebAssembly <span aria-hidden="true">/</span> Node.js</p>
+        <h1 id="page-title">Nén ảnh ở đâu<br> hiệu quả hơn?</h1>
+        <p>So sánh dung lượng tải lên và thời gian chờ khi cùng một pipeline nén chạy ở trình duyệt hoặc máy chủ.</p>
+      </div>
+      <div class="flow-map" role="group" aria-label="Thứ tự xử lý của hai luồng">
+        <div class="flow-row is-active" data-flow="server">
+          <span class="flow-label">Máy chủ</span>
+          <ol class="flow-steps">
+            <li>JPEG gốc</li><li>Tải lên</li><li>Nén Wasm</li>
+          </ol>
+        </div>
+        <div class="flow-row" data-flow="browser">
+          <span class="flow-label">Trình duyệt</span>
+          <ol class="flow-steps">
+            <li>JPEG gốc</li><li>Nén Wasm</li><li>Tải lên</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <div class="workspace">
+      <section class="panel setup" aria-labelledby="setup-title">
+        <h2 id="setup-title">Thiết lập phép đo</h2>
+
+        <fieldset class="modes">
+          <legend>Vị trí nén</legend>
+          <div class="mode-options">
+            <label class="mode">
+              <input type="radio" name="mode" value="server" checked>
+              <span><strong>Máy chủ</strong><small>Tải ảnh gốc lên rồi nén</small></span>
+            </label>
+            <label class="mode">
+              <input type="radio" name="mode" value="browser">
+              <span><strong>Trình duyệt</strong><small>Nén ảnh trước khi tải lên</small></span>
+            </label>
+          </div>
+        </fieldset>
+
+        <h3>Ảnh đầu vào</h3>
+        <div class="drop-zone" id="drop-zone">
+          <span class="file-icon" aria-hidden="true"></span>
+          <p><strong>Kéo thả ảnh JPEG</strong><small>Lô chuẩn gồm 10 ảnh, tổng khoảng 50 MB</small></p>
+          <label class="choose" for="files">Chọn ảnh</label>
+          <input class="file-input" id="files" type="file" accept="image/jpeg,.jpg,.jpeg" multiple>
+        </div>
+        <p class="file-alert" id="file-alert" role="status" hidden></p>
+        <div id="batch" class="batch" hidden>
+          <div class="batch-heading">
+            <p id="file-summary" aria-live="polite"></p>
+            <button class="text-button" id="clear-files" type="button">Xóa lô ảnh</button>
+          </div>
+          <ul id="file-list" class="file-list" aria-label="Ảnh JPEG đã chọn"></ul>
+        </div>
+
+        <div class="actions">
+          <button class="run-button" id="run-benchmark" type="button" disabled>Chạy phép đo</button>
+          <p>Chờ kết nối codec Wasm và máy chủ Node.js.</p>
+        </div>
+      </section>
+
+      <section class="panel results" aria-labelledby="results-title">
+        <h2 id="results-title">Kết quả phép đo</h2>
+        <dl class="metrics">
+          <div class="metric">
+            <dt>Dung lượng tải lên</dt>
+            <dd class="metric-value" aria-label="Chưa đo dung lượng tải lên"><span>—</span><small>MB</small></dd>
+            <dd class="metric-description">Số byte của phần thân HTTP request.</dd>
+          </div>
+          <div class="metric">
+            <dt>Độ trễ đầu-cuối</dt>
+            <dd class="metric-value" aria-label="Chưa đo độ trễ đầu-cuối"><span>—</span><small>ms</small></dd>
+            <dd class="metric-description">Từ lúc bấm gửi đến khi máy chủ xác nhận đã lưu ảnh.</dd>
+          </div>
+        </dl>
+        <p class="empty-note">Kết quả sẽ xuất hiện sau khi một lượt đo hoàn tất.</p>
+      </section>
+    </div>
+  </main>
+
+  <footer class="shell footer">CSC13114 <span aria-hidden="true">·</span> CQ2023/3</footer>
+</body>
+</html>
