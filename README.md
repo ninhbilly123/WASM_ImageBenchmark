@@ -14,16 +14,22 @@ Seminar CSC13114 CQ2023/3. Nhóm chọn nén ảnh làm phạm vi khảo sát.
 
 > For a fixed batch of 10 high-resolution JPEGs (~50 MB), how do upload payload (MB) and submit-to-server-confirmation latency (ms) change when the same WebAssembly compression pipeline runs in the browser before upload instead of on the Node.js server after upload, under controlled network conditions?
 
-## Giao diện demo
+## Chạy từ bản clone mới
 
-Mở [`demo/index.html`](demo/index.html) trong trình duyệt để đổi vị trí nén và thử chọn, kéo thả hoặc xóa lô JPEG. Tổng dung lượng ở danh sách là dung lượng tệp đầu vào. Nút **Chạy phép đo** sẽ được bật khi tích hợp codec Wasm và server Node.js.
+### Tải repo và mở demo
 
-## Chạy lại phép đo từ bản clone mới
+Cần Git để clone repo và một trình duyệt để mở demo. Chạy hai lệnh sau trong thư mục bạn muốn lưu dự án.
 
-1. Clone repo [ninhbilly123/WASM_ImageBenchmark](https://github.com/ninhbilly123/WASM_ImageBenchmark) và mở thư mục gốc của bản clone.
-2. Chuẩn bị môi trường và dữ liệu. **[Điền yêu cầu và các bước cài đặt đã kiểm tra]**
-3. Chạy **[Điền một lệnh đo đã kiểm tra]**. Lệnh cần in số đo và lưu kết quả thô vào `results/`.
-4. Mở **[Điền đường dẫn log và ví dụ đầu ra]** để đối chiếu với báo cáo.
+```sh
+git clone https://github.com/ninhbilly123/WASM_ImageBenchmark.git
+cd WASM_ImageBenchmark
+```
+
+Mở [`demo/index.html`](demo/index.html) trực tiếp trong trình duyệt. Bạn có thể chọn vị trí nén, chọn hoặc kéo thả JPEG và xóa lô ảnh. Danh sách hiển thị dung lượng tệp đầu vào.
+
+### Chạy lại phép đo
+
+**Đang triển khai.** Nút **Chạy phép đo** đang chờ tích hợp codec Wasm và máy chủ Node.js. Khi benchmark sẵn sàng, mục này sẽ hướng dẫn chuẩn bị bộ 10 JPEG và chạy một lệnh để in số đo, đồng thời lưu log vào [`results/`](results/).
 
 ## Hồ sơ seminar
 
