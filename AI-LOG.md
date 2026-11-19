@@ -64,3 +64,17 @@ Asked for: Commit trang demo, checkout main, push nhánh feat/benchmark-demo và
 Kept: Commit 1bc31c6 chứa giao diện demo, hướng dẫn mở trang và mục nhật ký phát triển giao diện.
 Changed: Codex đã mở PR #2 vào main nhưng bỏ sót mục nhật ký riêng cho bước Git. Nhóm nhắc bổ sung, rồi Codex đối chiếu commit và trạng thái PR để ghi lại bước này.
 Rejected: Không đưa file kế hoạch trong research vào commit vì file nằm ngoài repo Git. Đã kiểm tra danh sách tệp được stage và git diff --cached --check.
+
+## 2026-11-20 — Rà soát rubric, cập nhật kế hoạch và quy tắc repo
+Tool: Antigravity (Gemini).
+Asked for: Đánh giá hiện trạng project, đối chiếu `docs/ke-hoach-seminar-d5.md` và `AGENTS.md` với `docs/seminar_rubric.md`, sau đó commit và push lên nhánh `docs/fresh-clone-guide`.
+Kept: Cấu trúc 7 đầu việc, phân công 3 thành viên và 5 nhóm quy ước trong `AGENTS.md`.
+Changed: Bổ sung quy ước pre-warm Wasm đối xứng, tự động hóa trình duyệt và giới hạn mạng bằng code trong `npm run measure`, tách log chạy lại trong `results/` để không ghi đè log chính thức, nêu rõ chi phí đánh đổi và trường hợp nên tránh trong `REPORT.md`, kiểm chứng nguồn chính thức kèm ngày truy cập, và thêm context pointers cùng quy tắc cập nhật Google Sheets vào `AGENTS.md`. Đã commit `5c6c0bc` và push lên `origin/docs/fresh-clone-guide`.
+Rejected: Câu hướng dẫn chung chung (no-op) ở mục `Làm việc trong repo` của `AGENTS.md` sau khi đối chiếu `.agents/skills/writing-for-agents/SKILL.md`. Đã kiểm tra lại bằng `git diff --cached --check` và đối chiếu từng tiêu chí của rubric.
+
+## 2026-11-20 — Hoàn thành Việc 1 (đặc tả phép đo) và cập nhật Google Sheets
+Tool: Antigravity (Gemini) và CLI `gsheets`.
+Asked for: Lập kế hoạch và tạo đặc tả kỹ thuật cho Việc 1 (`docs/benchmark-spec.md`), đồng thời thêm cột `Bằng chứng` và cập nhật task `D5-04` trên Google Sheets.
+Kept: Năm hợp đồng bàn giao cho Việc 2–4 gồm `@jsquash/jpeg` (`quality: 75`, tuần tự, pre-warm đối xứng), 1 HTTP POST `multipart/form-data` lên `/api/benchmark`, DOM hooks trên `demo/`, Playwright + CDP (`20 Mbps / 40 ms RTT`) và schema log trong `results/`.
+Changed: Tạo `docs/benchmark-spec.md`, dẫn link từ `docs/ke-hoach-seminar-d5.md`, thêm cột `Bằng chứng` (cột `L`) và dòng `D5-04` trên Google Sheets (`Trang tính1`). Khi ghi bảng tính, AI ban đầu gọi `gsheets mutate write` sai dấu phân tách cột (`|` thay vì `,`) và thiếu escape dấu phẩy nên lệnh báo lỗi; sau đó chuyển sang `gsheets mutate batch` với mảng JSON 2 chiều và đọc lại dải `B13:L18` để xác nhận. Ngoài ra AI bỏ sót bước tự ghi `AI-LOG.md` sau khi hoàn thành task cho đến khi nhóm nhắc, nên đã siết lại quy tắc bắt buộc tự động ghi `AI-LOG.md` trong `AGENTS.md`.
+Rejected: Lệnh `gsheets mutate write` dạng chuỗi inline dễ lỗi khi ô có dấu phẩy; không ghi đè cột `J` (`% Tiến độ`) để giữ nguyên công thức sẵn có trên Google Sheets.
