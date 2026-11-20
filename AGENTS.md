@@ -10,14 +10,17 @@
 
 ## Làm việc trong repo
 
+- Khi phát sinh vấn đề mới, yêu cầu chưa rõ hoặc có điểm chưa chắc chắn, phải hỏi người dùng để xác nhận trước khi thực hiện.
 - Khi thiết kế pipeline, viết lệnh đo, tích hợp hai luồng hoặc chuẩn bị nộp bài và red-team, đọc `docs/ke-hoach-seminar-d5.md`. Khi đối chiếu tiêu chí chấm điểm, viết báo cáo hoặc điền bảng tự chấm, đọc `docs/seminar_rubric.md`.
+- Theo dõi tiến độ task trên Google Sheets (`1-A__bxXTPCprZHu8gtZ6cNZnnPuKrfHir6LMMDVtlx0`, sheet `Trang tính1`): ngay sau khi hoàn thành một việc trong kế hoạch, dùng `gsheets` (chọn tài khoản Google đã kết nối có quyền chỉnh sửa bảng tính, không hardcode email cá nhân trong repo) đọc bảng hiện tại rồi cập nhật dòng tương ứng kèm cột `Bằng chứng` (PR, commit, tệp hoặc ảnh) bằng `gsheets mutate batch` (chỉ ghi phạm vi ô hẹp cần sửa, không ghi đè cột `J` `% Tiến độ`).
 - Cập nhật `README.md` khi các bước cài đặt, dữ liệu hoặc lệnh đo thay đổi. Ghi lệnh thực sự tồn tại và đã được kiểm tra.
 - Dùng ảnh có quyền phân phối, ghi nguồn và cách lấy đúng bộ ảnh. Giữ thông tin đăng nhập, khóa API và dữ liệu riêng tư ngoài repo, log và prompt. Chạy benchmark trên hệ thống nhóm kiểm soát.
 
 ## Nhánh, commit và pull request
 
-- Tạo mỗi nhánh công việc từ `main` mới nhất. Đặt tên dạng `<type>/<mo-ta-ngan>` với chữ thường, từ cách nhau bằng dấu gạch nối. Dùng `feat`, `fix`, `docs`, `test`, `refactor` hoặc `chore` tùy nội dung. Ví dụ `docs/repo-setup` và `feat/browser-compression`.
-- Viết tiêu đề commit bằng tiếng Anh theo dạng `<type>(<scope>): <summary>`. Có thể bỏ scope khi thay đổi áp dụng cho toàn repo. Dùng động từ mở đầu, chẳng hạn `docs(repo): set up seminar documentation`. Mỗi commit gom một nhóm thay đổi liên quan. Kiểm tra `git status` và `git diff --cached` trước khi commit.
+- Trước khi bắt đầu mỗi task, kiểm tra nhánh hiện tại và checkout sang đúng nhánh dành cho task đó (hoặc tạo nhánh mới từ `main` mới nhất nếu chưa có); không làm lẫn nhiều task khác nhau trên cùng một nhánh cũ. Đặt tên dạng `<type>/<mo-ta-ngan>` với chữ thường, từ cách nhau bằng dấu gạch nối. Dùng `feat`, `fix`, `docs`, `test`, `refactor` hoặc `chore` tùy nội dung. Ví dụ `docs/repo-setup` và `feat/browser-compression`.
+- Commit đúng ý nghĩa: mỗi commit chỉ gom các thay đổi phục vụ cùng một mục đích cụ thể (tách thành nhiều commit nếu có các nhóm thay đổi độc lập). Viết tiêu đề commit bằng tiếng Anh theo dạng `<type>(<scope>): <summary>` phản ánh chính xác thay đổi (có thể bỏ scope khi áp dụng cho toàn repo, dùng động từ mở đầu, ví dụ `docs(repo): set up seminar documentation`). Kiểm tra `git status` và `git diff --cached` trước khi commit.
+- Sau khi hoàn thành mỗi task (đã cập nhật `AI-LOG.md` và Google Sheets nếu áp dụng), luôn hỏi người dùng có muốn commit và push lên remote không; chỉ commit và push sau khi người dùng xác nhận.
 - Push nhánh công việc và mở PR vào `main`. Tiêu đề PR tóm tắt thay đổi theo cùng quy ước với commit. Phần mô tả nêu lý do, thay đổi chính và cách đã kiểm tra. Nếu có issue liên quan, dẫn link trong PR.
 - Đưa thay đổi vào `main` qua PR. Giữ nguyên lịch sử của `main` và các nhánh dùng chung.
 
@@ -32,7 +35,7 @@
 
 ## Nhật ký sử dụng AI
 
-- Mỗi task chính có AI hỗ trợ có một mục trong `AI-LOG.md` sau khi hoàn tất. Dùng tiêu đề `## YYYY-MM-DD — Tên công việc` và đủ năm trường `Tool`, `Asked for`, `Kept`, `Changed`, `Rejected`.
+- **Bắt buộc tự động ghi nhật ký ngay sau khi hoàn thành mỗi task chính có AI hỗ trợ (trước khi kết thúc lượt trả lời hoặc trước khi commit)** — không chờ người dùng nhắc. Mỗi mục trong `AI-LOG.md` dùng tiêu đề `## YYYY-MM-DD — Tên công việc (<Họ và tên thành viên>)` (ví dụ `## 2026-11-20 — Hoàn thành Việc 1 (Phạm An Ninh)`, nếu chưa rõ thành viên đang thực hiện thì hỏi trước khi ghi) và đủ năm trường `Tool`, `Asked for`, `Kept`, `Changed`, `Rejected`.
 - Ghi đúng những gì nhóm giữ, sửa hoặc bỏ và phép kiểm tra dẫn đến quyết định đó. Nếu một mục không phát sinh thay đổi hoặc phần bị loại, ghi kết quả kiểm tra thực tế.
 - Để đáp ứng mức 9–10 của tiêu chí 6, nhật ký cần nêu ít nhất một lỗi thực tế từ AI — đặc biệt là thông tin kỹ thuật sai (phiên bản, API, trạng thái công cụ) hoặc phép đo sai bản chất (đo sai đối tượng, mốc thời gian hoặc dung lượng) — cùng cách nhóm phát hiện và minh chứng kiểm tra.
 - Bỏ qua hỏi đáp nhanh, chỉnh câu chữ hoặc đồng bộ tài liệu nhỏ, và các việc người dùng yêu cầu bỏ qua. Khi chưa rõ việc có cần log, hỏi trước khi sửa `AI-LOG.md`.

@@ -2,7 +2,7 @@
 
 **Hạn nộp chính thức: 22:00 ngày 29/11/2026. Mục tiêu nội bộ: chốt hồ sơ trong ngày 28/11.** Các mốc dùng giờ Việt Nam. Phân công dưới đây là đề xuất để nhóm thống nhất theo lịch và thế mạnh của từng người.
 
-Repo đã có khung hồ sơ trên `main` và [giao diện demo trong PR #2](https://github.com/ninhbilly123/WASM_ImageBenchmark/pull/2) trên nhánh `feat/benchmark-demo`. Giao diện đã có chọn/kéo thả JPEG, hai chế độ nén và chỗ hiển thị kết quả. Nút chạy sẽ được bật khi nối codec và server. [Câu hỏi hiện hành](../README.md#câu-hỏi-nghiên-cứu) · [Rubric seminar](./seminar_rubric.md)
+Repo đã có khung hồ sơ trên `main` và [giao diện demo trong PR #2](https://github.com/ninhbilly123/WASM_ImageBenchmark/pull/2) trên nhánh `feat/benchmark-demo`. Giao diện đã có chọn/kéo thả JPEG, hai chế độ nén và chỗ hiển thị kết quả. Nút chạy sẽ được bật khi nối codec và server. [Câu hỏi hiện hành](../README.md#câu-hỏi-nghiên-cứu) · [Rubric seminar](./seminar_rubric.md) · [Đặc tả Việc 1](./benchmark-spec.md)
 
 ## Phân công
 
@@ -16,7 +16,7 @@ Repo đã có khung hồ sơ trên `main` và [giao diện demo trong PR #2](htt
 
 | Việc | Chủ trì | Hạn nội bộ | Đầu ra và tiêu chí hoàn thành |
 | --- | --- | --- | --- |
-| **1. Chốt cách đo và điểm bàn giao** | Ninh, cả nhóm duyệt | **Cuối ngày 20/11** | Dùng giao diện hiện có để thống nhất đầu vào/đầu ra của pipeline, cách gửi lô ảnh, nội dung xác nhận từ server và dữ liệu lệnh đo sẽ đọc. Chốt quy tắc khởi tạo codec đối xứng ở cả hai luồng (ưu tiên pre-warm sẵn Wasm ở browser lẫn server trước khi bấm giờ, tách riêng dung lượng và thời gian tải/khởi tạo `.wasm` làm chi phí phụ) và thống nhất cơ chế tự động hóa trình duyệt cùng giới hạn mạng trong lệnh đo. |
+| **1. Chốt cách đo và điểm bàn giao** | Ninh, cả nhóm duyệt | **Cuối ngày 20/11** | Đã soạn hợp đồng bàn giao tại [docs/benchmark-spec.md](./benchmark-spec.md): chốt `@jsquash/jpeg` (`quality: 75`, tuần tự 1 ảnh/lần, pre-warm đối xứng), 1 HTTP POST `multipart/form-data` lên `/api/benchmark`, DOM hooks trên `demo/`, Playwright + CDP (`20 Mbps / 40 ms RTT`) và schema log trong `results/`. Chờ cả nhóm duyệt để khóa bản cuối. |
 | **2. Thử cùng pipeline trên một JPEG** | Duy | **21/11** | Thử codec song song với việc 1. Dùng cùng bản build Wasm, đường giải mã–mã hóa và cấu hình ở browser lẫn Node.js. Kiểm tra đầu ra hợp lệ và cùng kích thước/định dạng. So checksum nếu đầu ra xác định theo từng byte. Bàn giao cách gọi pipeline, phiên bản và nguồn chính thức cho Ninh. |
 | **3. Chuẩn bị lô ảnh và khung lệnh đo** | Khoa | **21/11** | Cố định 10 JPEG độ phân giải cao, tổng khoảng 50 MB. Ghi nguồn hoặc quyền phân phối, kích thước pixel, số byte và checksum từng ảnh. Chuẩn bị lệnh dự kiến `npm run measure` tự bật server, điều khiển trình duyệt tự động và áp dụng giới hạn mạng bằng code; lưu log mỗi lần chạy vào tệp riêng (theo timestamp/mã lượt) để không ghi đè log chính thức. Việc này có thể tiến hành song song với việc 2. |
 | **4. Nối giao diện với hai luồng và lệnh đo** | Ninh tích hợp, Duy và Khoa bàn giao | **22/11** | Nối nút chạy với codec và server. Bấm chạy một JPEG ở cả hai chế độ, kiểm tra chung mốc xác nhận đã lưu ảnh, rồi chạy đủ 10 ảnh. Hiển thị payload do server đếm và độ trễ đo từ trình duyệt. Khoa nối lệnh đo vào cùng hai luồng, cập nhật README và chạy thử từ bản clone mới để xác nhận log có đủ hai chỉ số. |
